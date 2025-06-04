@@ -21,6 +21,11 @@ on:
         required: false
         default: false
         type: boolean
+      USE_NX30PRO_EEPROM:
+        description: 'Use nx30pro eeprom'
+        required: true
+        default: true
+        type: boolean
       USE_MTWIFI_CFG:
         description: 'Use mtwifi-cfg'
         required: true
@@ -111,6 +116,12 @@ jobs:
       if: env.USE_MTWIFI_CFG == 'true'
       run: |
         sed -i '/CONFIG_PACKAGE_luci-app-mtk=y/{N;N;N;s/CONFIG_PACKAGE_luci-app-mtk=y\nCONFIG_PACKAGE_luci-i18n-mtk-zh-cn=y\nCONFIG_PACKAGE_wifi-profile=y\nCONFIG_WIFI_NORMAL_SETTING=y/CONFIG_PACKAGE_lua-cjson=y\nCONFIG_PACKAGE_luci-app-mtwifi-cfg=y\nCONFIG_PACKAGE_luci-i18n-mtwifi-cfg-zh-cn=y\nCONFIG_PACKAGE_mtwifi-cfg=y/}' openwrt/.config
+
+    - name: 设置是否使用 nx30pro eeprom
+      if: env.USE_NX30PRO_EEPROM == 'true'
+      run: |
+        mkdir -p files/target/linux/mediatek/mt7981/base-files/lib/firmware
+        cp eeprom/nx30pro_eeprom.bin files/target/linux/mediatek/mt7981/base-files/lib/firmware/MT7981_iPAiLNA_EEPROM.bin
 
     - name: 设置 dts 闪存频率
       if: env.USE_52MHZ == 'true'
