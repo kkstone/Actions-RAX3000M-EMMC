@@ -99,8 +99,6 @@ jobs:
     - name: 修复 Go 语言版本
       run: |
         cd openwrt
-        rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box,frp}
-        rm -rf feeds/luci/luci-app-frp*
         rm -rf feeds/packages/lang/golang
         git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 
