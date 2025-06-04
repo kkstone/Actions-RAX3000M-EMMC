@@ -120,8 +120,8 @@ jobs:
     - name: 设置是否使用 nx30pro eeprom
       if: env.USE_NX30PRO_EEPROM == 'true'
       run: |
-        mkdir -p files/target/linux/mediatek/mt7981/base-files/lib/firmware
-        cp eeprom/nx30pro_eeprom.bin files/target/linux/mediatek/mt7981/base-files/lib/firmware/MT7981_iPAiLNA_EEPROM.bin
+        mkdir -p files/lib/firmware
+        cp eeprom/nx30pro_eeprom.bin files/lib/firmware/MT7981_iPAiLNA_EEPROM.bin
 
     - name: 设置 dts 闪存频率
       if: env.USE_52MHZ == 'true'
