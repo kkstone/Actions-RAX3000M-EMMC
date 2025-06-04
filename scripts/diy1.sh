@@ -14,11 +14,12 @@ git clone https://github.com/xiaoxiao29/luci-app-adguardhome.git
 git clone https://github.com/jerrykuku/lua-maxminddb.git
 git clone https://github.com/mwarning/zerotier-openwrt.git
 git clone https://github.com/pymumu/openwrt-smartdns.git
-wget -O -N feeds/packages/net/tcping/Makefile https://cdn.jsdelivr.net/gh/immortalwrt/packages@master/net/tcping/Makefile
-wget -r --no-parent https://cdn.jsdelivr.net/gh/immortalwrt/packages@master/net/natmap/ && cp -rf cdn.jsdelivr.net/gh/immortalwrt/packages@master/net/natmap feeds/packages/net/natmap/ && rm -rf cdn.jsdelivr.net && find feeds/packages/net/natmap -name index.html -exec rm {} \;
-wget -r --no-parent https://cdn.jsdelivr.net/gh/immortalwrt/packages@master/net/ddns-go/ && cp -rf cdn.jsdelivr.net/gh/immortalwrt/packages@master/net/ddns-go feeds/packages/net/ddns-go/ && rm -rf cdn.jsdelivr.net && find feeds/packages/net/ddns-go -name index.html -exec rm {} \;
-wget -r --no-parent https://cdn.jsdelivr.net/gh/immortalwrt/packages@master/utils/ttyd/ && cp -rf cdn.jsdelivr.net/gh/immortalwrt/packages@master/utils/ttyd feeds/packages/utils/ttyd/ && rm -rf cdn.jsdelivr.net && find feeds/packages/utils/ttyd -name index.html -exec rm {} \;
-wget -r --no-parent https://cdn.jsdelivr.net/gh/immortalwrt/packages@master/utils/7z/ && cp -rf cdn.jsdelivr.net/gh/immortalwrt/packages@master/utils/7z feeds/packages/utils/7z/ && rm -rf cdn.jsdelivr.net && find feeds/packages/utils/7z -name index.html -exec rm {} \;
+wget -N -O feeds/packages/net/tcping/Makefile https://cdn.jsdelivr.net/gh/immortalwrt/packages@master/net/tcping/Makefile
+wget -r -np -nH --cut-dirs=4 --reject=index.html -P feeds/packages/net/ https://cdn.jsdelivr.net/gh/immortalwrt/packages@master/net/tcping/
+wget -r -np -nH --cut-dirs=4 --reject=index.html -P feeds/packages/net/ https://cdn.jsdelivr.net/gh/immortalwrt/packages@master/net/natmap/
+wget -r -np -nH --cut-dirs=4 --reject=index.html -P feeds/packages/net/ https://cdn.jsdelivr.net/gh/immortalwrt/packages@master/net/ddns-go/
+wget -r -np -nH --cut-dirs=4 --reject=index.html -P feeds/packages/utils/ https://cdn.jsdelivr.net/gh/immortalwrt/packages@master/utils/ttyd/
+wget -r -np -nH --cut-dirs=4 --reject=index.html -P feeds/packages/utils/ https://cdn.jsdelivr.net/gh/immortalwrt/packages@master/utils/7z/
 
 unzip -d ./ $GITHUB_WORKSPACE/luci-packages/luci-app-frp.zip
 unzip -d ./ $GITHUB_WORKSPACE/luci-packages/luci-app-wolplus.zip
