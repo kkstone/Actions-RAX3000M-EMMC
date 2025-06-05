@@ -135,6 +135,7 @@ jobs:
       run: |
         mkdir -p openwrt/files/lib/firmware
         cp eeprom/nx30pro_eeprom.bin openwrt/files/lib/firmware/MT7981_iPAiLNA_EEPROM.bin
+        chmod 755 openwrt/files/lib/firmware/MT7981_iPAiLNA_EEPROM.bin
         sed -i 's/caldata_extract_mmc/# caldata_extract_mmc/' openwrt/target/linux/mediatek/mt7981/base-files/lib/preinit/90_extract_caldata
     
     - name: 设置 dts 闪存频率
