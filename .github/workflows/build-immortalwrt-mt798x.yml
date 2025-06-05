@@ -63,6 +63,7 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         echo "USE_MTWIFI_CFG=${{ github.event.inputs.USE_MTWIFI_CFG }}" >> $GITHUB_ENV
+        echo "USE_NX30PRO_EEPROM=${{ github.event.inputs.USE_NX30PRO_EEPROM }}" >> $GITHUB_ENV
         echo "USE_52MHZ=${{ github.event.inputs.USE_52MHZ }}" >> $GITHUB_ENV
         chmod +x $FREE_DISK_SH && $FREE_DISK_SH
         sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
@@ -101,7 +102,7 @@ jobs:
         ./scripts/feeds update -a && ./scripts/feeds install -a        
         chmod +x $GITHUB_WORKSPACE/$DIY_SH && $GITHUB_WORKSPACE/$DIY_SH
 
-    - name: 修复 Go 语言版本
+    - name: 升级部分软件及 Go 语言
       run: |
         cd openwrt
         rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box,frp,smartdns,zerotier,natmap,ddns-go,tcping}
