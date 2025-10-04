@@ -105,7 +105,7 @@ jobs:
     - name: 升级部分软件及 Go 语言
       run: |
         cd openwrt
-        rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box,frp,smartdns,zerotier,natmap,ddns-go,tcping}
+        rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box,frp,zerotier,natmap,ddns-go,tcping}
         rm -rf feeds/luci/luci-app-frp*
         rm -rf feeds/packages/utils/{zoneinfo,ttyd}
         rm -rf feeds/packages/libs/libwebsockets
