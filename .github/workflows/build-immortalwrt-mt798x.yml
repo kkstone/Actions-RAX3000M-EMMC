@@ -117,7 +117,7 @@ jobs:
         wget -r -np -nH --cut-dirs=4 -P feeds/packages/libs/ https://cdn.jsdelivr.net/gh/immortalwrt/packages@master/libs/libwebsockets/ && find feeds/packages/libs/libwebsockets -type f -name "index.html*" -exec rm {} \;
 
         rm -rf feeds/packages/lang/golang
-        git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
+        git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
 
     - name: 导入补丁和配置
       run: |
