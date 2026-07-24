@@ -100,6 +100,9 @@ jobs:
       run: |
         cd openwrt
         make defconfig
+        sed -i 's/CONFIG_PACKAGE_miniupnpd-nftables=m/# CONFIG_PACKAGE_miniupnpd-nftables is not set/' .config
+        sed -i 's/CONFIG_PACKAGE_luci-app-upnp=m/# CONFIG_PACKAGE_luci-app-upnp is not set/' .config
+        sed -i 's/CONFIG_PACKAGE_luci-i18n-upnp-zh-cn=m/# CONFIG_PACKAGE_luci-i18n-upnp-zh-cn is not set/' .config
         make download -j8 V=10
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
